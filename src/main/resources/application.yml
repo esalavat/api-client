@@ -1,0 +1,30 @@
+server:
+  port: 8080
+logging:
+  level:
+    root: DEBUG
+spring:
+  application.name: api-client
+  security:
+    oauth2:
+      client:
+        registration:
+          messages-client-oidc:
+            provider: spring
+            client-id: messages-client
+            client-secret: supersecret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://api-client:8080/login/oauth2/code/{registrationId}"
+            scope: openid
+            client-name: messages-client-oidc
+          messages-client-authorization-code:
+            provider: spring
+            client-id: messages-client
+            client-secret: supersecret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://api-client:8080/authorized"
+            scope: message.read
+            client-name: messages-client-authorization-code
+        provider:
+          spring:
+            issuer-uri: http://api-auth:8082
