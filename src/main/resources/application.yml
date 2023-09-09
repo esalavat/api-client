@@ -3,6 +3,10 @@ server:
 logging:
   level:
     root: DEBUG
+    org:
+      springframework:
+        security:
+          oauth2: DEBUG
 spring:
   application.name: api-client
   security:
